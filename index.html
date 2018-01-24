@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>TodoList</title>
@@ -75,6 +76,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>TodoList</h1>
@@ -94,15 +96,57 @@
       </li>
     </ul>
     <div class="footer">
-      Todo: <span id="todo-count">1</span> •
-      Done: <span id="completed-count">0</span> •
-      Total: <span id="total-count">1</span>
+      Todo: <span id="todo-count">1</span> • Done: <span id="completed-count">0</span> • Total: <span id="total-count">1</span>
     </div>
   </div>
 
   <script>
-  	// JavaScript code comes here...
+    // select the elements containing the counts
+    // function toggelDone() {
+    //   checkBox = this
+    //
+    // }
+    function updateCounters() {
+      // Total number of todos
+      var totalCount = document.getElementById('total-count');
+      var totalTodos = document.getElementsByClassName("todo").length;
+      totalCount.innerHTML = totalTodos;
+
+      // Total number of completed todos
+      var completedCount = document.getElementById('completed-count');
+      var completedTodos = document.getElementsByClassName("completed").length;
+      completedCount.innerHTML = completedTodos;
+
+      // Total number of uncompleted todos
+      var todoCount = document.getElementById('todo-count');
+      var uncompletedTodos = totalTodos - completedTodos;
+      todoCount.innerHTML = uncompletedTodos;
+    }
+    updateCounters() ;
+
+    function myUpdateCounters() {
+      let totalTodo = document.getElementById('todo-count');
+      let totalCompleted = document.getElementById('completed-count');
+      let totalCount = document.getElementById('total-count');
+
+
+      // count the number of todo's by their class name
+      let totalTodos = document.getElementsByClassName("todo").length;
+
+      // Get the number of completed todo's by their class name
+      let totalCompleted = document.getElementsByClassName("completed").length;
+
+      // update the HTML inside the counter element
+      totalCount.innerHTML = totalTodos;
+      totalCompleted.innerHTML = totalCompleted;
+      totalTodo.innerHTML = totalTodos - totalCompleted;
+
+      // Why does this not change?
+      // totalCount.innerHTML = "totalTodos";
+    }
+    // myUpdateCounters();
   </script>
 
 </body>
+
 </html>
