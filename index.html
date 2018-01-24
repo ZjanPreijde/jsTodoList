@@ -87,11 +87,11 @@
 
     <ul id="todolist">
       <li class="todo">
-        <input id="todo-1" type="checkbox">
+        <input id="todo-1" type="checkbox" onChange="toggleDone.bind(this)();">
         <label for="todo-1">Sweep the floor</label>
       </li>
       <li class="todo completed">
-        <input id="todo-2" type="checkbox" checked>
+        <input id="todo-2" type="checkbox" checked onChange="toggleDone.bind(this)();">
         <label for="todo-2">Dust the vases</label>
       </li>
     </ul>
@@ -101,11 +101,19 @@
   </div>
 
   <script>
-    // select the elements containing the counts
-    // function toggelDone() {
-    //   checkBox = this
-    //
-    // }
+  function toggleDone() {
+    var checkbox = this;
+
+    // check the checked status of the checkbox
+    if (checkbox.checked) {
+      // the "completed" class is set on the parent element, the <li>
+      checkbox.parentElement.className = "todo completed";
+    } else {
+      checkbox.parentElement.className = "todo";
+    }
+    updateCounters();
+    }
+
     function updateCounters() {
       // Total number of todos
       var totalCount = document.getElementById('total-count');
@@ -124,6 +132,7 @@
     }
     updateCounters() ;
 
+    // Check later where I went wrong
     function myUpdateCounters() {
       let totalTodo = document.getElementById('todo-count');
       let totalCompleted = document.getElementById('completed-count');
